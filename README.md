@@ -105,18 +105,18 @@ PYTHONPATH=. python eval/inference_ytvos.py -c configs/ytvos_swint.yaml -ng 6 -c
 ```
 
 ## Model Zoo
-Coming soon... 
+Coming soon.
 
 ## Acknowledgements
 Our code is built upon [ReferFormer](https://github.com/wjn922/ReferFormer), [SOC](https://github.com/RobertLuo1/NeurIPS2023_SOC), [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO). Thanks for these work.
 
 ## Citation
 If you find our work helpful for your research, please consider citing our paper.
-```
+```bibtex
 @article{liang2025referdino,
     title={ReferDINO: Referring Video Object Segmentation with Visual Grounding Foundations},
     author={Liang, Tianming and Lin, Kun-Yu and Tan, Chaolei and Zhang, Jianguo and Zheng, Wei-Shi and Hu, Jian-Fang},
-    journal={arXiv preprint arXiv:2501.14607},
+    booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
     year={2025}
 }
 ```
