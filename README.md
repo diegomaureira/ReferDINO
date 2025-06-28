@@ -24,9 +24,9 @@
 ![visual](assets/visual.jpg)
 
 ## 📢 News
-* `2025.6.28` Swin-B checkpoints are released.
-* `2025.6.27` All training and inference code for ReferDINO is released.
-* `2025.6.25` ReferDINO is accepted to ICCV 2025 ! 🎉 
+* `2025.6.28`: Swin-B checkpoints are released.
+* `2025.6.27`: All training and inference code for ReferDINO is released.
+* `2025.6.25`: ReferDINO is accepted to ICCV 2025 ! 🎉 
 * `2025.3.28` Our [ReferDINO-Plus](https://github.com/iSEE-Laboratory/ReferDINO-Plus), an ensemble approach of ReferDINO and SAM2, 
 achieved the 2nd place in [PVUW](https://pvuw.github.io/) challenge RVOS Track at CVPR 2025! 🎉 See our [report](https://arxiv.org/pdf/2503.23509) for details!
 
@@ -106,17 +106,22 @@ The following batch sizes are suitable for training on 48G GPUs. The results are
 python main.py -c configs/coco_swint.yaml -rm pretrain -bs 12 -ng 6 --epochs 20 --version swint --eval_off
 ```
 
-* Finetune on Refer-YouTube-VOS with the pretrained checkpoints.
+* Finetuning on Refer-YouTube-VOS with the pretrained checkpoints.
 ```
 python main.py -c configs/ytvos_swint.yaml -rm train -bs 2 -ng 8 --version swint -pw output/coco/swint/checkpoints/best.pth.tar --eval_off
 ```
 
 * Inference on Refer-YouTube-VOS.
 ```
-PYTHONPATH=. python eval/inference_ytvos.py -c configs/ytvos_swint.yaml -ng 6 -ckpt output/ref_youtube_vos/swint/checkpoints/best.pth.tar --version swint
+PYTHONPATH=. python eval/inference_ytvos.py -c configs/ytvos_swint.yaml -ng 8 -ckpt output/ref_youtube_vos/swint/checkpoints/best.pth.tar --version swint
 ```
 
-* Inference for A2D-Sentences (or JHMDB-Sentences).
+* Inference on MeViS Valid Set.
+```
+PYTHONPATH=. python eval/inference_mevis.py --split valid -c configs/mevis_swint.yaml -ng 8 -ckpt output/mevis/swint/checkpoints/best.pth.tar --version swint
+```
+
+* Inference on A2D-Sentences (or JHMDB-Sentences).
 ```
 PYTHONPATH=. python main.py -c configs/a2d_swint.yaml -rm train -ng 8 --version swint -ckpt output/a2d_sentences/swint/checkpoints/best.pth.tar --eval
 ```

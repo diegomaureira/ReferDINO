@@ -32,6 +32,28 @@ ReferDINO
 │   │   │   ├── instances_refcocog_val.json
 ```
 
+## MeViS
+
+Download the dataset from the competition's website [here](https://codalab.lisn.upsaclay.fr/competitions/15094#participate-get_data).
+Then, extract and organize the file. We expect the directory structure to be the following:
+
+```
+ReferDINO
+├── data
+│   ├── mevis
+│   │   ├── train
+│   │   │   ├── JPEGImages
+│   │   │   ├── mask_dict.json
+│   │   │   ├── meta_expressions.json
+│   │   ├── valid_u
+│   │   │   ├── JPEGImages
+│   │   │   ├── mask_dict.json
+│   │   │   ├── meta_expressions.json
+│   │   ├── valid
+│   │   │   ├── JPEGImages
+│   │   │   ├── meta_expressions.json
+```
+
 
 ## Ref-Youtube-VOS
 
