@@ -24,9 +24,9 @@
 ![visual](assets/visual.jpg)
 
 ## 📢 News
-* `2025.6.28`: Swin-B checkpoints are released.
-* `2025.6.27`: All training and inference code for ReferDINO is released.
-* `2025.6.25`: ReferDINO is accepted to ICCV 2025 ! 🎉 
+* `2025.6.28` Swin-B checkpoints are released.
+* `2025.6.27` All training and inference code for ReferDINO is released.
+* `2025.6.25` ReferDINO is accepted to ICCV 2025 ! 🎉 
 * `2025.3.28` Our [ReferDINO-Plus](https://github.com/iSEE-Laboratory/ReferDINO-Plus), an ensemble approach of ReferDINO and SAM2, 
 achieved the 2nd place in [PVUW](https://pvuw.github.io/) challenge RVOS Track at CVPR 2025! 🎉 See our [report](https://arxiv.org/pdf/2503.23509) for details!
 
