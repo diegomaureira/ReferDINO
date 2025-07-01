@@ -38,7 +38,7 @@ achieved the 2nd place in [PVUW](https://pvuw.github.io/) challenge RVOS Track a
 ## 🔎 Framework
 ![model](assets/model.png)
 
-## Enviroment Setup
+## Environment Setup
 We have tested our code in PyTorch 1.11 and 2.5.1, so either version should be compatible.
 
 ```
@@ -97,7 +97,7 @@ ReferFormer/
 └── main.py
 ```
 
-## Get Stated
+## Get Started
 The following batch sizes are suitable for training on 48G GPUs. The results are saved in `output/{dataset}/{version}/`.
 
 * Pretrain `Swin-T` on `coco` datasets with 8 GPUs. You can either specify the gpu indices with `--gids 0 1 2 3`. 
