@@ -75,7 +75,7 @@ Please refer to [DATA.md](assets/DATA.md) for data preparation.
 The directory struture is organized as follows.
 
 ```
-ReferFormer/
+ReferDINO/
 ├── configs
 ├── data
 │   ├── coco
@@ -137,7 +137,7 @@ We have released the following model weights on [HuggingFace](https://huggingfac
 | mevis                 |    Swin-B     | [mevis_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/mevis_swinb.pth) |
 
 ## Acknowledgements
-Our code is built upon [ReferFormer](https://github.com/wjn922/ReferFormer), [SOC](https://github.com/RobertLuo1/NeurIPS2023_SOC), [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO). We sincerely appreciate these efforts.
+Our code is built upon [ReferFormer](https://github.com/wjn922/ReferFormer), [SOC](https://github.com/RobertLuo1/NeurIPS2023_SOC) and [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO). We sincerely appreciate these efforts.
 
 ## Citation
 If you find our work helpful for your research, please consider citing our paper.
