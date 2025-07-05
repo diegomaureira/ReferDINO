@@ -98,9 +98,9 @@ ReferDINO/
 ```
 
 ## Get Started
-The results will be saved in `output/{dataset}/{version}/`. If you encounter OOM errors, please decrease the batch_size or the `num_frames` in config file.
+The results will be saved in `output/{dataset}/{version}/`. If you encounter OOM errors, please reduce the batch_size or the `num_frames` in config file.
 
-* [Optional] Pretrain `Swin-B` on `coco` datasets with 8 GPUs. You can either specify the gpu indices with `--gids 0 1 2 3`. 
+* Pretrain `Swin-B` on `coco` datasets with 8 GPUs. You can either specify the gpu indices with `--gids 0 1 2 3`. 
 
 ```
 python main.py -c configs/coco_swinb.yaml -rm pretrain -bs 12 -ng 6 --epochs 20 --version swint --eval_off
