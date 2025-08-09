@@ -17,6 +17,7 @@
 <h3 align="center">
   <a href="https://isee-laboratory.github.io/ReferDINO/" target='_blank'>Project Page</a> |
   <a href="https://arxiv.org/abs/2501.14607" target='_blank'>Paper</a>
+  <a href="https://huggingface.co/spaces/liangtm/referdino" target='_blank'>Demo</a>
 </h3>
 
 </div>
@@ -24,14 +25,16 @@
 ![visual](assets/visual.jpg)
 
 ## 📢 News
-* `2025.6.28`: Swin-B checkpoints are released.
-* `2025.6.27`: All training and inference code for ReferDINO is released.
-* `2025.6.25`: ReferDINO is accepted to ICCV 2025 ! 🎉 
+* `2025.8.09` Our demo is available on HuggingFace Space! Try [here](https://huggingface.co/spaces/liangtm/referdino)! 
+* `2025.8.09` Demo script is available.
+* `2025.6.28` Swin-B checkpoints are released.
+* `2025.6.27` All training and inference code for ReferDINO is released.
+* `2025.6.25` ReferDINO is accepted to ICCV 2025 ! 🎉 
 * `2025.3.28` Our [ReferDINO-Plus](https://github.com/iSEE-Laboratory/ReferDINO-Plus), an ensemble approach of ReferDINO and SAM2, 
 achieved the 2nd place in [PVUW](https://pvuw.github.io/) challenge RVOS Track at CVPR 2025! 🎉 See our [report](https://arxiv.org/pdf/2503.23509) for details!
 
 ## 👨‍💻 TODO
-- [ ] Release demo code and online demo.
+- [X] Release demo code and online demo.
 - [X] Release model weights.
 - [X] Release training and inference code.
 
@@ -67,6 +70,13 @@ Download pretrained GroundingDino as follows and put them in the diretory `pretr
 ```
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth
+```
+
+## Try ReferDINO on your video
+We provide a script for fast applying ReferDINO with given video and text.
+
+```
+python demo_video.py <video_path> --text "a description for the target" -ckpt ckpt/ryb_mevis_swinb.pth
 ```
 
 ## Data Preparation
@@ -135,6 +145,7 @@ We have released the following model weights on [HuggingFace](https://huggingfac
 | coco, ref-youtube-vos |    Swin-B     | [ryt_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/ryt_swinb.pth)   |
 | coco, a2d-sentences   |    Swin-B     | [a2d_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/a2d_swinb.pth)   |
 | mevis                 |    Swin-B     | [mevis_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/mevis_swinb.pth) |
+| coco, ref-youtube-vos, mevis |    Swin-B     | [ryb_mevis_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/ryb_mevis_swinb.pth) |
 
 ## Acknowledgements
 Our code is built upon [ReferFormer](https://github.com/wjn922/ReferFormer), [SOC](https://github.com/RobertLuo1/NeurIPS2023_SOC) and [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO). We sincerely appreciate these efforts.
