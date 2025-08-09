@@ -98,32 +98,32 @@ ReferDINO/
 ```
 
 ## Get Started
-The following batch sizes are suitable for training on 48G GPUs. The results are saved in `output/{dataset}/{version}/`.
+The results will be saved in `output/{dataset}/{version}/`. If you encounter OOM errors, please reduce the batch_size or the `num_frames` in config file.
 
-* Pretrain `Swin-T` on `coco` datasets with 8 GPUs. You can either specify the gpu indices with `--gids 0 1 2 3`. 
+* Pretrain `Swin-B` on `coco` datasets with 8 GPUs. You can either specify the gpu indices with `--gids 0 1 2 3`. 
 
 ```
-python main.py -c configs/coco_swint.yaml -rm pretrain -bs 12 -ng 6 --epochs 20 --version swint --eval_off
+python main.py -c configs/coco_swinb.yaml -rm pretrain -bs 12 -ng 6 --epochs 20 --version swint --eval_off
 ```
 
 * Finetuning on Refer-YouTube-VOS with the pretrained checkpoints.
 ```
-python main.py -c configs/ytvos_swint.yaml -rm train -bs 2 -ng 8 --version swint -pw output/coco/swint/checkpoints/best.pth.tar --eval_off
+python main.py -c configs/ytvos_swinb.yaml -rm train -bs 2 -ng 8 --version swinb -pw ckpt/coco_swinb.pth --eval_off
 ```
 
 * Inference on Refer-YouTube-VOS.
 ```
-PYTHONPATH=. python eval/inference_ytvos.py -c configs/ytvos_swint.yaml -ng 8 -ckpt output/ref_youtube_vos/swint/checkpoints/best.pth.tar --version swint
+PYTHONPATH=. python eval/inference_ytvos.py -c configs/ytvos_swinb.yaml -ng 8 -ckpt ckpt/ryt_swinb.pth --version swinb
 ```
 
 * Inference on MeViS Valid Set.
 ```
-PYTHONPATH=. python eval/inference_mevis.py --split valid -c configs/mevis_swint.yaml -ng 8 -ckpt output/mevis/swint/checkpoints/best.pth.tar --version swint
+PYTHONPATH=. python eval/inference_mevis.py --split valid -c configs/mevis_swinb.yaml -ng 8 ckpt/mevis_swinb.pth --version swinb
 ```
 
 * Inference on A2D-Sentences (or JHMDB-Sentences).
 ```
-PYTHONPATH=. python main.py -c configs/a2d_swint.yaml -rm train -ng 8 --version swint -ckpt output/a2d_sentences/swint/checkpoints/best.pth.tar --eval
+PYTHONPATH=. python main.py -c configs/a2d_swinb.yaml -rm train -ng 8 --version swinb -ckpt ckpt/a2d_swinb.pth --eval
 ```
 
 ## Model Zoo
