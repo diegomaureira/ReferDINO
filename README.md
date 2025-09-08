@@ -145,7 +145,7 @@ We have released the following model weights on [HuggingFace](https://huggingfac
 | coco, ref-youtube-vos |    Swin-B     | [ryt_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/ryt_swinb.pth)   |
 | coco, a2d-sentences   |    Swin-B     | [a2d_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/a2d_swinb.pth)   |
 | mevis                 |    Swin-B     | [mevis_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/mevis_swinb.pth) |
-| coco, ref-youtube-vos, mevis |    Swin-B     | [ryt_mevis_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/ryb_mevis_swinb.pth) |
+| coco, ref-youtube-vos, mevis |    Swin-B     | [ryt_mevis_swinb.pth](https://huggingface.co/liangtm/referdino/blob/main/ryt_mevis_swinb.pth) |
 
 ## Acknowledgements
 Our code is built upon [ReferFormer](https://github.com/wjn922/ReferFormer), [SOC](https://github.com/RobertLuo1/NeurIPS2023_SOC) and [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO). We sincerely appreciate these efforts.
