@@ -16,7 +16,7 @@
 
 <h3 align="center">
   <a href="https://isee-laboratory.github.io/ReferDINO/" target='_blank'>Project Page</a> |
-  <a href="https://arxiv.org/abs/2501.14607" target='_blank'>Paper</a>
+  <a href="https://arxiv.org/abs/2501.14607" target='_blank'>Paper</a> |
   <a href="https://huggingface.co/spaces/liangtm/referdino" target='_blank'>Demo</a>
 </h3>
 
