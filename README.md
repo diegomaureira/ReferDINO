@@ -113,7 +113,7 @@ The results will be saved in `output/{dataset}/{version}/`. If you encounter OOM
 * Pretrain `Swin-B` on `coco` datasets with 8 GPUs. You can either specify the gpu indices with `--gids 0 1 2 3`. 
 
 ```
-python main.py -c configs/coco_swinb.yaml -rm pretrain -bs 12 -ng 8 --epochs 20 --version swint --eval_off
+python main.py -c configs/coco_swinb.yaml -rm pretrain -bs 12 -ng 8 --epochs 20 --version swinb --eval_off
 ```
 
 * Finetuning on Refer-YouTube-VOS with the pretrained checkpoints.
