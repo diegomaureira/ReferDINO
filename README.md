@@ -76,7 +76,7 @@ wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alp
 We provide a script to quickly apply ReferDINO to the given video and text.
 
 ```
-python demo_video.py <video_path> --text "a description for the target" -ckpt ckpt/ryb_mevis_swinb.pth
+python demo_video.py <video_path> --text "a description for the target" -ckpt ckpt/ryt_mevis_swinb.pth
 ```
 
 ## Data Preparation
