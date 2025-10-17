@@ -121,8 +121,16 @@ def infer(model, video, text, args):
         save_imgs.append(np.asarray(img).copy())
 
     fps = info['video_fps'] / args.frame_step
-    iio.imwrite(save_video, save_imgs, fps=fps)
+    print("save path: {}, length of the video: {}, fps: {}".format(save_video, len(save_imgs), fps))
+    # save video with cv2
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    videoWriter = cv2.VideoWriter(save_video, fourcc, fps, (origin_w, origin_h))
+    for item in save_imgs:
+        videoWriter.write(cv2.cvtColor(item, cv2.COLOR_RGB2BGR))
+    videoWriter.release()
     print("result video saved to {}".format(save_video))
+    #iio.imwrite(save_video, save_imgs, fps=fps, codec=b'libx264')
+    #print("result video saved to {}".format(save_video))
 
 # Post-process functions
 def box_cxcywh_to_xyxy(x):

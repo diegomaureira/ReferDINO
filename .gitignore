@@ -1,0 +1,5 @@
+__pycache__/
+models/GroundingDINO/
+output/
+ckpt/
+videos/
