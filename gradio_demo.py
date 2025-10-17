@@ -18,6 +18,7 @@ from rich.progress import track
 import imageio.v3 as iio
 import cv2
 import warnings
+import gradio as gr
 import tempfile
 import subprocess
 warnings.filterwarnings("ignore")
@@ -34,10 +35,6 @@ transform = T.Compose([
 color_list = utils.colormap()
 color_list = color_list.astype('uint8').tolist()
 
-def main(args):
-    model = load_model(args)
-    infer(model, args.video, args.text, args)
-    
 def convert_to_mp4(input_path):
     tmp_file = tempfile.NamedTemporaryFile(suffix=".mp4", delete=False)
     tmp_path = tmp_file.name
@@ -170,6 +167,7 @@ def infer(model, video, text, args):
         os.remove(os.path.join(output_dir, f))
     os.rmdir(output_dir)
     print(f"Video created using FFmpeg and saved to {save_video}")
+    return save_video
 
 
 # Post-process functions
@@ -216,32 +214,55 @@ def load_model(args):
     model.eval()
     return model
 
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser('RVOS DINO: Inference')
-    parser.add_argument('--config_path', default='configs/ytvos_swinb.yaml',
-                        help='path to configuration file')
-    parser.add_argument("--checkpoint_path", '-ckpt', required=True,
-                        help="The checkpoint path")
-    parser.add_argument("--frame_step", default=1, type=int, help="Sampling interval of the video")
-    parser.add_argument("--output_dir", default="output/demo")
-    parser.add_argument("--video", required=True)
-    parser.add_argument("--text", required=True)
-    parser.add_argument("--device", default="cuda")
-    parser.add_argument("--save_images", action='store_true')
-    parser.add_argument("--show_box", action='store_true')
-    parser.add_argument("--mask_edge_width", default=6, type=int)
-    parser.add_argument("--bar_height", default=80, type=int)
-    parser.add_argument("--font_size", default=60, type=int)
-    parser.add_argument("--save_name", type=str, default=None)
-    parser.add_argument("--tracking_alpha", default=0.1, type=float)
-    args = parser.parse_args()
-
-    with open(args.config_path) as f:
+# -------------------------------
+# Inference function for Gradio
+# -------------------------------
+def rvos_infer(video_file, prompt, checkpoint_path, config_path, device="cuda", frame_step=1, show_box=False):
+    print(video_file)
+    
+    with open(config_path) as f:
         yaml = YAML(typ='safe', pure=True)
         config = yaml.load(f)
     config = {k: v['value'] for k, v in config.items()}
-    args = {**config, **vars(args)}
+    
+    args = {**config, 
+            "checkpoint_path": checkpoint_path,
+            "device": device,
+            "frame_step": frame_step,
+            "show_box": show_box,
+            "output_dir": "output/gradio_demo",
+            "mask_edge_width": 6,
+            "save_images": False,
+            "save_name": None,
+            "tracking_alpha": 0.1,
+            "enable_amp": True
+           }
     args = EasyDict(args)
     args.GroundingDINO.tracking_alpha = args.tracking_alpha
-    main(args)
+    
+    model = load_model(args)
+    save_video = infer(model, video_file, prompt, args)
+    # clean torch cache
+    torch.cuda.empty_cache()
+    return save_video
+    
+# -------------------------------
+# Gradio UI
+# -------------------------------
+demo = gr.Interface(
+    fn=rvos_infer,
+    inputs=[
+        gr.Video(label="Input Video"),
+        gr.Textbox(label="Text Prompt"),
+        gr.Textbox(label="Checkpoint Path", placeholder="e.g., checkpoints/dino_ckpt.pth"),
+        gr.Textbox(label="Config Path", placeholder="e.g., configs/ytvos_swinb.yaml"),
+        gr.Dropdown(["cpu", "cuda"], label="Device", value="cuda"),
+        gr.Slider(1, 5, value=1, step=1, label="Frame Step"),
+        gr.Checkbox(label="Show Boxes", value=False)
+    ],
+    outputs=gr.Video(label="Output Video"),
+    title="RVOS DINO Video Segmentation",
+    description="Upload a video and a text prompt, and RVOS DINO will segment the object described."
+)
+
+demo.launch(share=True)

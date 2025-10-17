@@ -28,3 +28,4 @@ yapf==0.43.0
 scikit-image
 ruamel.yaml
 av
+gradio
